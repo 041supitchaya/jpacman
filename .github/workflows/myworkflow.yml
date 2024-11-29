@@ -27,9 +27,9 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     
-    - name: Clear Gradle cache (ล้างแคช Gradle)
-      run: ./gradlew cleanBuildCache
-    
+    - name: Clean project (ล้างโปรเจค)
+      run: ./gradlew clean  # ใช้คำสั่ง clean เพื่อล้างโปรเจค
+
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
