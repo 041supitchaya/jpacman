@@ -67,9 +67,12 @@ jobs:
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
+     # ติดตั้ง Xvfb
+    - name: Install Xvfb
+      run: sudo apt-get update && sudo apt-get install -y xvfb
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # เพิ่มการใช้ xvfb-run เพื่อให้สามารถรันโปรแกรมที่ต้องการ GUI ได้
     - name: Build with Gradle using xvfb-run
-      run: xvfb-run ./gradlew build
+      run: xvfb-run ./gradlew build --stacktrace
