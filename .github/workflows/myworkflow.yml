@@ -28,6 +28,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+  
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
@@ -65,3 +66,10 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+
+      - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # เพิ่มการใช้ xvfb-run เพื่อให้สามารถรันโปรแกรมที่ต้องการ GUI ได้
+    - name: Build with Gradle using xvfb-run
+      run: xvfb-run ./gradlew build
