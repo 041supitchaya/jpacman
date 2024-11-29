@@ -39,8 +39,8 @@ jobs:
     - name: Build with Gradle (refresh dependencies)
       run: ./gradlew build --refresh-dependencies
 
-    - name: Run tests with xvfb-run (รองรับ GUI ในสภาพแวดล้อมที่ไม่มีหน้าจอ)
-      run: xvfb-run ./gradlew test  # รันทดสอบด้วย xvfb-run
+    - name: Run tests with xvfb-run
+      run: xvfb-run ./gradlew test  # ใช้ xvfb-run เพื่อรองรับการทดสอบที่ใช้ GUI
 
   dependency-submission:
     runs-on: ubuntu-latest
@@ -61,5 +61,5 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with xvfb-run (รองรับ GUI ในสภาพแวดล้อมที่ไม่มีหน้าจอ)
-      run: xvfb-run ./gradlew build  # รันด้วย xvfb-run
+    - name: Build with xvfb-run
+      run: xvfb-run ./gradlew build  # ใช้ xvfb-run สำหรับการ build
