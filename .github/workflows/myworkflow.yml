@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Clean project
-      run: ./gradlew clean  # ใช้คำสั่ง clean เพื่อล้างโปรเจค
+      run: ./gradlew clean  # Clean the project
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4.0.0  # v4.0.0
@@ -39,8 +39,8 @@ jobs:
     - name: Build with Gradle (refresh dependencies)
       run: ./gradlew build --refresh-dependencies
 
-    - name: Build with xvfb-run (รองรับ AWT หรือ GUI)
-      run: xvfb-run ./gradlew build  # ใช้ xvfb-run เพื่อให้สามารถทำงานที่ต้องใช้ GUI
+    - name: Run tests with xvfb-run (support GUI in headless environment)
+      run: xvfb-run ./gradlew test  # Run tests with xvfb-run
 
   dependency-submission:
     runs-on: ubuntu-latest
@@ -61,5 +61,5 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with xvfb-run (รองรับ AWT หรือ GUI)
-      run: xvfb-run ./gradlew build  # ใช้ xvfb-run เพื่อให้สามารถทำงานที่ต้องใช้ GUI
+    - name: Build with xvfb-run (support GUI in headless environment)
+      run: xvfb-run ./gradlew build  # Run with xvfb-run
