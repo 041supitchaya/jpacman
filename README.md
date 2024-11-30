@@ -4,7 +4,9 @@
 ![Coverage](.github/badges/jacoco.svg)
 ![Branches](.github/badges/branches.svg)
 
-
+git add README.md
+git commit -m "Add test results badges to README"
+git push origin main
 
 ## About
 
